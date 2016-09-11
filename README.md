@@ -30,6 +30,13 @@ require __DIR__.'/../vendor/autoload.php';
 // Take an instance of Router Class.
 $router = new AmitKhare\InkRouter\InkRouter();
 
+// URL::GET www.example.com/article/t-shirts/323
+// anonymous callback function
+$router->add("GET",'/article/(\w+)/(\d+)/', function($category, $id){
+    echo "Category: ".$category."<br/>";
+    echo "ID: ".$id;
+});
+// OR Callback of a class->method()
 // URL::GET www.example.com/
 $router->add("GET",'/', "Page:home");
 
@@ -56,14 +63,6 @@ use AmitKhare\InkRouter\InkRouter;
 // (Optional) set Base URI as second perameter : /example
 $router = new InkRouter(['db'='DATABASE','var1'=123],"/example");
 
-// URL::GET www.example.com/article/t-shirts/323
-// anonymous callback function
-$router->add("GET",'/article/(\w+)/(\d+)/', function($category, $id){
-    echo "Category: ".$category."<br/>";
-    echo "ID: ".$id;
-});
-
-// OR callback of a class method
 // URL::GET www.example.com/
 $router->add("GET",'/', "Page:home");
 
