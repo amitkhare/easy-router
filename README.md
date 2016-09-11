@@ -31,8 +31,7 @@ require __DIR__.'/../vendor/autoload.php';
 use AmitKhare\InkRouter\InkRouter;
 
 // Take an instance of Router Class.
-// (optional) set Base URI as second perameter : /example
-$router = new InkRouter(['var1'=123],"/example");
+$router = new InkRouter();
 
 // URL::GET www.example.com/
 $router->add("GET",'/', "Page:home");
