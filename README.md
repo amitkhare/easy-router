@@ -1,4 +1,4 @@
-# amitkhare/InkRouter
+# amitkhare/inkrouter
 
 ##InkRouter is an easy to use minimal PHP routing system
 
