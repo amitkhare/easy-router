@@ -16,6 +16,29 @@ git clone https://github.com/amitkhare/inkrouter.git
 
 # EXAMPLE USAGE
 
+## MINIMAL EXAMPLE
+<?php
+
+// autoload via composer
+require __DIR__.'/../vendor/autoload.php';
+
+// OR WITHOUT COMPOSER
+// require __DIR__.'/PATH-TO/InkRouter.php';
+
+// use namespace
+use AmitKhare\InkRouter\InkRouter;
+
+// Take an instance of Router Class.
+// set Base URI as second perameter : /example
+$router = new InkRouter(['var1'=123],"/example");
+
+// URL::GET www.example.com/
+$router->add("GET",'/', "Page:home");
+
+// Dispatch Routes.
+$router->dispatch();
+```
+## DETAILED EXAMPLE
 ```sh
 <?php
 
