@@ -34,7 +34,7 @@ $router-add("GET",'/page/(\w+)/(\d+)/', "Page:get#category|id");
 $router-dispatch();
 ```
 
-****############## EXAMPLE CLASS ##################
+# ########### EXAMPLE CLASS ##########
 
 
 ```sh
