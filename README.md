@@ -2,6 +2,8 @@
 
 ##InkRouter is an easy to use minimal PHP routing system
 
+# INDEX FILE
+
 ```sh
 <?php
 
