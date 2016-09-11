@@ -3,7 +3,7 @@
 ##InkRouter is an easy to use minimal PHP routing system
 
 # INSTALL
-
+## VIA COMPOSER
 ```sh
 composer require amitkhare/inkrouter
 ```
