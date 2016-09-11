@@ -36,6 +36,7 @@ $router->add("GET",'/article/(\w+)/(\d+)/', function($category, $id){
     echo "Category: ".$category."<br/>";
     echo "ID: ".$id;
 });
+
 // OR Callback of a class->method()
 // URL::GET www.example.com/
 $router->add("GET",'/', "Page:home");
