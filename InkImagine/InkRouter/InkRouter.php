@@ -3,7 +3,7 @@ namespace InkImagine\InkRouter;
 /**
  *
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
- * @link https://github.com/amitkhare/ink-router
+ * @link https://github.com/amitkhare/InkRouter
  * @author Amit Kumar Khare <amit@inkimagine.com>
  *
  * InkRouter is an easy to use minimal PHP routing system.
