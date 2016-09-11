@@ -27,11 +27,8 @@ require __DIR__.'/../vendor/autoload.php';
 // OR WITHOUT COMPOSER
 // require __DIR__.'/PATH-TO/InkRouter.php';
 
-// use namespace
-use AmitKhare\InkRouter\InkRouter;
-
 // Take an instance of Router Class.
-$router = new InkRouter();
+$router = new AmitKhare\InkRouter\InkRouter();
 
 // URL::GET www.example.com/
 $router->add("GET",'/', "Page:home");
