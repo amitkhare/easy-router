@@ -58,8 +58,7 @@ $router->add("GET",'/', "Page:home");
 
 // URL::GET www.example.com/article/t-shirts/323
 // anonymous callback function
-$router->add("GET",'/article/(\w+)/(\d+)/', function($category, $id)
-{
+$router->add("GET",'/article/(\w+)/(\d+)/', function($category, $id){
 	echo "Category: ".$category."<br/>";
 	echo "ID: ".$id;
 });
