@@ -48,8 +48,7 @@ $router->add("GET",'/page/(\w+)/(\d+)/', "Page:get#category|id");
 $router->dispatch();
 ```
 
-# PAGE CLASS
-## EXAMPLE
+## PAGE CLASS
 
 ```sh
 class Page {
