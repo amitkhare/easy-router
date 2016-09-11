@@ -46,6 +46,9 @@ $router->dispatch();
 // autoload via composer
 require __DIR__.'/../vendor/autoload.php';
 
+// OR WITHOUT COMPOSER
+// require __DIR__.'/PATH-TO/InkRouter.php';
+
 // use namespace
 use AmitKhare\InkRouter\InkRouter;
 
