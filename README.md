@@ -17,6 +17,8 @@ git clone https://github.com/amitkhare/inkrouter.git
 # EXAMPLE USAGE
 
 ## MINIMAL EXAMPLE
+
+```sh
 <?php
 
 // autoload via composer
@@ -37,8 +39,11 @@ $router->add("GET",'/', "Page:home");
 
 // Dispatch Routes.
 $router->dispatch();
+
 ```
+
 ## DETAILED EXAMPLE
+
 ```sh
 <?php
 
