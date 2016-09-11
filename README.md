@@ -2,7 +2,8 @@
 
 ##InkRouter is an easy to use minimal PHP routing system
 
-> <?php
+```sh
+<?php
 // autoload via composer
 require __DIR__.'/../vendor/autoload.php';
 // use namespace
@@ -22,3 +23,4 @@ $router-add("GET",'/about/{w}', "Page:about#var1",['myname'='amitkhare']);
 $router-add("GET",'/page/(\w+)/(\d+)/', "Page:get#category|id");
 // Dispatch Routes.
 $router-dispatch();
+```
