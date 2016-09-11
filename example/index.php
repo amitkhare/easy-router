@@ -4,7 +4,7 @@
 require __DIR__.'/../vendor/autoload.php';
 
 // use namespace
-use InkImagine\InkRouter\InkRouter;
+use AmitKhare\InkRouter\InkRouter;
 
 // Take an instance of Router Class.
 // set Base URI as second perameter : /example
