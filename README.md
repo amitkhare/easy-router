@@ -9,7 +9,7 @@ composer require amitkhare/inkrouter
 ```
 ## VIA GIT
 ```sh
-git clone https://github.com/amitkhare/inkrouter
+git clone https://github.com/amitkhare/inkrouter.git
 ```
 
 
