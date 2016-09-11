@@ -4,7 +4,9 @@
 
 # INSTALL
 
-> ```sh composer require amitkhare/inkrouter ```
+```sh
+composer require amitkhare/inkrouter
+```
 
 
 
