@@ -19,10 +19,10 @@ $router->add("GET",'/product/{d}', "Page:product#id");
 // URL::POST www.example.com/product
 $router->add("POST",'/product', "Page:product_process");
 
-// URL::GET www.example.com/about/something/
-$router->add("GET",'/about/{w}', "Page:about#var1",['myname'=>'amitkhare']);
+// URL::GET www.example.com/about/some-thing/
+$router->add("GET",'/about/{any}', "Page:about#var1",['myname'=>'amitkhare']);
 
-// URL::GET www.example.com/page/t-shirts/323
+// URL::GET www.example.com/page/tshirts/323
 $router->add("GET",'/page/(\w+)/(\d+)/', "Page:get#category|id");
 
 
