@@ -19,7 +19,15 @@ class InkRouter
 	private $baseURI="/";
 	private $matchTypes = array(
 		'{w}'  => '(\w+)',
-		'{d}'  => '(\d+)'
+		'{d}'  => '(\d+)',
+		'{:any}' => '([^/]+)',
+		'{:num}' => '([0-9]+)',
+		'{:all}' => '(.*)',
+		'{i}'  => '([0-9]++)',
+		'{a}'  => '([0-9A-Za-z]++)',
+		'{h}'  => '([0-9A-Fa-f]++)',
+		'{*}'  => '(.+?)',
+		'{**}' => '(.++)'
 	);
   public function __construct($vars=[],$baseURI="/")
   {
