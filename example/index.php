@@ -4,27 +4,23 @@
 require __DIR__.'/../vendor/autoload.php';
 
 // use namespace
-use AmitKhare\InkRouter\InkRouter;
+use AmitKhare\PHPRouter\PHPRouter;
 
 // Take an instance of Router Class.
-// set Base URI as second perameter : /example
-$router = new InkRouter(['db'=>'DATABASE','var1'=>123],"/example");
+// set optional Base URI as second perameter
+$router = new PHPRouter(['db'=>'DATABASE','var1'=>123],"/example/index.php");
 
 // URL::GET www.example.com/
 $router->add("GET",'/', "Page:home");
 
 // URL::GET www.example.com/product/222
-$router->add("GET",'/product/{d}', "Page:product#id");
+$router->add("GET",'/product/{id:d}', "Page:product");
 
 // URL::POST www.example.com/product
 $router->add("POST",'/product', "Page:product_process");
 
 // URL::GET www.example.com/about/some-thing/
-$router->add("GET",'/about/{any}', "Page:about#var1",['myname'=>'amitkhare']);
-
-// URL::GET www.example.com/page/tshirts/323
-$router->add("GET",'/page/(\w+)/(\d+)/', "Page:get#category|id");
-
+$router->add("GET",'/about/{var1:any}', "Page:about",['myname'=>'amitkhare']);
 
 // Dispatch Routes.
 $router->dispatch();
