@@ -40,9 +40,9 @@ require __DIR__.'/../vendor/autoload.php';
 // Take an instance of Router Class.
 $router = new AmitKhare\PHPRouter\PHPRouter();
 
-// URL::GET www.example.com/article/tshirts/323
+// URL::GET www.example.com/product/10
 // anonymous callback function
-$route->add('GET','/category/{id:num}', function($id){
+$route->add('GET','/product/{id:num}', function($id){
 	echo  $id;
 });
 
@@ -70,8 +70,9 @@ require __DIR__.'/../vendor/autoload.php';
 use AmitKhare\PHPRouter\PHPRouter;
 
 // Take an instance of Router Class.
-// (Optional) set Base URI as second perameter : /example
-$router = new PHPRouter(['var1'=123],"/example");
+// (Optional) set Base URI as second perameter
+$baseURI = "/";
+$router = new PHPRouter(['var1'=123],$baseURI);
 
 // URL::GET www.example.com/
 $router->add("GET",'/', "Page:home");
