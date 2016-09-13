@@ -38,7 +38,7 @@ require __DIR__.'/../vendor/autoload.php';
 // require __DIR__.'/PATH-TO/EasyRouter.php';
 
 // Take an instance of Router Class.
-$router = new AmitKhare\EasyRouter\EasyRouter();
+$router = new AmitKhare\EasyRouter();
 
 // URL::GET www.example.com/product/10
 // anonymous callback function
@@ -67,7 +67,7 @@ require __DIR__.'/../vendor/autoload.php';
 // require __DIR__.'/PATH-TO/EasyRouter.php';
 
 // use namespace
-use AmitKhare\EasyRouter\EasyRouter;
+use AmitKhare\EasyRouter;
 
 // Take an instance of Router Class.
 // (Optional) set Base URI as second perameter
