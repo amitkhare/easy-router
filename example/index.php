@@ -8,7 +8,7 @@ use AmitKhare\PHPRouter\PHPRouter;
 
 // Take an instance of Router Class.
 // set optional Base URI as second perameter
-$router = new PHPRouter(['var1'=>123],"/example/index.php");
+$router = new PHPRouter(['var1'=>123],"/example");
 
 // URL::GET www.example.com/
 $router->add("GET",'/', "Page:home");
