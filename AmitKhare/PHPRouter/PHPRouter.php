@@ -107,12 +107,12 @@ class PHPRouter {
 	}
 	
 	public function pageNotFound($callback,$vars){
-		header("HTTP/1.0 404 Not Found");
+		header($_SERVER['SERVER_PROTOCOL']." 404 Not Found");
 		include(__DIR__."/includes/404.php");
 	}
 	
 	public function methodNotAllowed(){
-		header("HTTP/1.0 405 Method Not Allowed");
+		header($_SERVER['SERVER_PROTOCOL']." 405 Method Not Allowed");
 		include(__DIR__."/includes/405.php");
 	}
 
