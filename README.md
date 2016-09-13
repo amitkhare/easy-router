@@ -1,11 +1,11 @@
-# amitkhare/inkrouter
+# amitkhare/php-router
 
-##InkRouter is an easy to use minimal PHP routing system
+##PHPRouter is an easy to use minimal PHP routing system
 
 ## INSTALL
 ### VIA COMPOSER
 ```sh
-composer require amitkhare/inkrouter
+composer require amitkhare/php-router dev-master
 ```
 ### VIA GIT
 ```sh
@@ -25,14 +25,14 @@ git clone https://github.com/amitkhare/inkrouter.git
 require __DIR__.'/../vendor/autoload.php';
 
 // OR WITHOUT COMPOSER
-// require __DIR__.'/PATH-TO/InkRouter.php';
+// require __DIR__.'/PATH-TO/PHPRouter.php';
 
 // Take an instance of Router Class.
-$router = new AmitKhare\InkRouter\InkRouter();
+$router = new AmitKhare\PHPRouter\PHPRouter();
 
-// URL::GET www.example.com/article/t-shirts/323
+// URL::GET www.example.com/article/tshirts/323
 // anonymous callback function
-$router->add("GET",'/article/(\w+)/(\d+)/', function($category, $id){
+$router->add("GET",'/article/{category:w}/{id:num}/', function($category, $id){
     echo "Category: ".$category."<br/>";
     echo "ID: ".$id;
 });
@@ -55,36 +55,33 @@ $router->dispatch();
 require __DIR__.'/../vendor/autoload.php';
 
 // OR WITHOUT COMPOSER
-// require __DIR__.'/PATH-TO/InkRouter.php';
+// require __DIR__.'/PATH-TO/PHPRouter.php';
 
 // use namespace
-use AmitKhare\InkRouter\InkRouter;
+use AmitKhare\PHPRouter\PHPRouter;
 
 // Take an instance of Router Class.
 // (Optional) set Base URI as second perameter : /example
-$router = new InkRouter(['db'='DATABASE','var1'=123],"/example");
+$router = new PHPRouter(['var1'=123],"/example");
 
 // URL::GET www.example.com/
 $router->add("GET",'/', "Page:home");
 
-// URL::GET www.example.com/article/t-shirts/323
+// URL::GET www.example.com/article/tshirts/323
 // anonymous callback function
-$router->add("GET",'/article/(\w+)/(\d+)/', function($category, $id){
-	echo "Category: ".$category."<br/>";
-	echo "ID: ".$id;
+$router->add("GET",'/article/{category:w}/{id:num}/', function($category, $id){
+    echo "Category: ".$category."<br/>";
+    echo "ID: ".$id;
 });
 
 // URL::GET www.example.com/product/222
-$router->add("GET",'/product/{d}', "Page:product#id");
+$router->add("GET",'/product/{id:d}', "Page:product");
 
 // URL::POST www.example.com/product
 $router->add("POST",'/product', "Page:product_process");
 
 // URL::GET www.example.com/about/something/
-$router->add("GET",'/about/{w}', "Page:about#var1",['myname'='amitkhare']);
-
-// URL::GET www.example.com/page/t-shirts/323
-$router->add("GET",'/page/(\w+)/(\d+)/', "Page:get#category|id");
+$router->add("GET",'/about/{var1:w}', "Page:about",['myname'='amitkhare']);
 
 // Dispatch Routes.
 $router->dispatch();
