@@ -2,21 +2,21 @@
 
 ##InkRouter is an easy to use minimal PHP routing system
 
-# INSTALL
-## VIA COMPOSER
+## INSTALL
+### VIA COMPOSER
 ```sh
 composer require amitkhare/inkrouter
 ```
-## VIA GIT
+### VIA GIT
 ```sh
 git clone https://github.com/amitkhare/inkrouter.git
 ```
 
 
 
-# EXAMPLE USAGE
+## EXAMPLE USAGE
 
-## MINIMAL EXAMPLE
+### MINIMAL EXAMPLE
 
 ```sh
 <?php
@@ -46,7 +46,7 @@ $router->dispatch();
 
 ```
 
-## DETAILED EXAMPLE
+### DETAILED EXAMPLE
 
 ```sh
 <?php
@@ -90,7 +90,7 @@ $router->add("GET",'/page/(\w+)/(\d+)/', "Page:get#category|id");
 $router->dispatch();
 ```
 
-## PAGE CLASS
+### PAGE CLASS
 
 ```sh
 class Page {
