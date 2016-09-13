@@ -36,44 +36,44 @@ class InkRouter
 		$this->uri = preg_replace('/^' . preg_quote($baseURI, '/') . '/', '', $_SERVER['REQUEST_URI']);
   }
   public function add($httpMethod,$pattern, $callback,$methodVars=[]) {
-			if(substr($pattern, -1) !="/"){
-				$pattern .= "/";
-			}
-			$pattern = "#^".$pattern."?$#";
-			$pattern = str_replace(array_keys($this->matchTypes), $this->matchTypes, $pattern);
-			if(!empty($methodVars)){
-				$this->methodVars = $methodVars;
-			}
+	if(substr($pattern, -1) !="/"){
+		$pattern .= "/";
+	}
+	$pattern = "#^".$pattern."?$#";
+	$pattern = str_replace(array_keys($this->matchTypes), $this->matchTypes, $pattern);
+	if(!empty($methodVars)){
+		$this->methodVars = $methodVars;
+	}
       $this->routes[$pattern] = $callback;
       $this->httpMethod[$pattern] = strtoupper($httpMethod);
   }
   public function dispatch() {
-			foreach ($this->routes as $pattern => $callback) {
-				    if (preg_match($pattern, $this->uri, $params) === 1) {
-							if(strpos($this->httpMethod[$pattern], $_SERVER['REQUEST_METHOD']) === false){
-								return call_user_func(function() {
-									echo "Method not allowed";
-								}, array_values($params));
-							}
-							array_shift($params);
-							if(is_string($callback)){
-								if(count($cb = explode("#",$callback))>1){
-										$callback = $cb[0];
-										$paramvars = explode("|",$cb[1]);
-								} else {
-									$paramvars = [];
-								}
-								if(count($paramvars)!=count($params)){
-									die('missing param on route '.$pattern);
-								}
-								foreach ($params as $key => $value) {
-									$this->methodVars[$paramvars[$key]] = $value;
-								}
-								return $this->callMethod($callback,$this->methodVars);
-							} else {
-								return call_user_func_array($callback, array_values($params));
-							}
-          }
+	foreach ($this->routes as $pattern => $callback) {
+		if (preg_match($pattern, $this->uri, $params) === 1) {
+			if(strpos($this->httpMethod[$pattern], $_SERVER['REQUEST_METHOD']) === false){
+				return call_user_func(function() {
+					echo "Method not allowed";
+				}, array_values($params));
+			}
+			array_shift($params);
+			if(is_string($callback)){
+				if(count($cb = explode("#",$callback))>1){
+					$callback = $cb[0];
+					$paramvars = explode("|",$cb[1]);
+				} else {
+					$paramvars = [];
+				}
+				if(count($paramvars)!=count($params)){
+					die('missing param on route '.$pattern);
+				}
+				foreach ($params as $key => $value) {
+					$this->methodVars[$paramvars[$key]] = $value;
+				}
+				return $this->callMethod($callback,$this->methodVars);
+			} else {
+				return call_user_func_array($callback, array_values($params));
+			}
+		}
       }
 			return call_user_func(function() {
 				echo "page not found";
@@ -86,4 +86,5 @@ class InkRouter
 		$cls = new $class($this->vars);
 		return $cls->$method((object)$methodVars);
 	}
+	
 }
