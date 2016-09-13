@@ -1,15 +1,15 @@
 <?php
-namespace AmitKhare\PHPRouter;
+namespace AmitKhare\SlimRouter;
 /**
  *
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
- * @link https://github.com/amitkhare/php-router
+ * @link https://github.com/amitkhare/slim-router
  * @author Amit Kumar Khare <amit@inkimagine.com>
  *
- * PHPRouter is an easy to use minimal PHP routing system.
+ * SlimRouter is an easy to use minimal PHP routing system.
  *
  **/
-class PHPRouter {
+class SlimRouter {
     private $baseURI="/";
     private $classVars;
     private $methodVars;
