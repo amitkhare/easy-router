@@ -4,11 +4,11 @@
 require __DIR__.'/../vendor/autoload.php';
 
 // use namespace
-use AmitKhare\PHPRouter\PHPRouter;
+use AmitKhare\SlimRouter\SlimRouter;
 
 // Take an instance of Router Class.
 // set optional Base URI as second perameter
-$router = new PHPRouter(['var1'=>123],"/example");
+$router = new SlimRouter(['var1'=>123],"/example");
 
 // URL::GET www.example.com/
 $router->add("GET",'/', "Page:home");
