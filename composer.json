@@ -1,7 +1,7 @@
 {
-    "name": "amitkhare/inkrouter",
-    "description": "inkrouter is an easy to use minimal PHP routing system.",
-    "homepage": "http://github.com/amitkhare/inkrouter",
+    "name": "amitkhare/php-router",
+    "description": "PHPRouter is an easy to use minimal PHP routing system.",
+    "homepage": "http://github.com/amitkhare/php-router",
     "license": "MIT",
     "autoload":{
         "psr-4":{
