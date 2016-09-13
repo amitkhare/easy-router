@@ -16,6 +16,16 @@ git clone https://github.com/amitkhare/php-router.git
 
 ## EXAMPLE USAGE
 
+### .HTACCESS FILE
+
+```sh
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+```
+
 ### MINIMAL EXAMPLE
 
 ```sh
@@ -32,9 +42,8 @@ $router = new AmitKhare\PHPRouter\PHPRouter();
 
 // URL::GET www.example.com/article/tshirts/323
 // anonymous callback function
-$router->add("GET",'/article/{category:w}/{id:num}/', function($category, $id){
-    echo "Category: ".$category."<br/>";
-    echo "ID: ".$id;
+$route->add('GET','/category/{id:num}', function($id){
+	echo  $id;
 });
 
 // OR Callback of a class->method()
@@ -121,14 +130,4 @@ class Page {
 		echo "this will show only if accessed via POST method.";
 	}
 }
-```
-
-### .HTACCESS FILE
-
-```sh
-RewriteEngine On
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php [QSA,L]
 ```
