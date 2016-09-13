@@ -28,6 +28,8 @@ class PHPRouter {
         '*'  => '(.+?)',
         '**' => '(.++)'
     );
+    public $error_callback;
+    
     public function __construct($classVars=[],$baseURI="/") {
         $this->baseURI = $baseURI;
         $this->classVars = (object) $classVars;
@@ -70,7 +72,18 @@ class PHPRouter {
 				}
      		}
      	}
-     	return $this->pageNotFound();
+     	
+	      if (!$this->error_callback) {
+	        $this->error_callback = function() {
+	          header($_SERVER['SERVER_PROTOCOL']." 404 Not Found");
+	          echo '404';
+	        };
+	      } else {
+	        if (is_string($this->error_callback)) {
+		          return $this->callMethod($this->error_callback,[]);
+		        }
+	      }
+	      call_user_func($this->error_callback,[]);
      }
     
     
@@ -114,6 +127,10 @@ class PHPRouter {
 	public function methodNotAllowed(){
 		header($_SERVER['SERVER_PROTOCOL']." 405 Method Not Allowed");
 		include(__DIR__."/includes/405.php");
+	}
+	
+	public function error($callback) {
+	    $this->error_callback = $callback;
 	}
 
 }
