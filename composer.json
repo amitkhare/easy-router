@@ -1,11 +1,11 @@
 {
-    "name": "amitkhare/slim-router",
-    "description": "Slim Router is an easy to use minimal PHP routing system.",
-    "homepage": "http://github.com/amitkhare/slim-router",
+    "name": "amitkhare/easy-router",
+    "description": "EasyRouter is an easy to use minimal PHP routing system.",
+    "homepage": "http://github.com/amitkhare/easy-router",
     "license": "MIT",
     "autoload":{
         "psr-4":{
-            "AmitKhare\\":"AmitKhare/"
+            "AmitKhare\\":"src/"
         }
     },
     "authors": [
