@@ -4,7 +4,7 @@
 require __DIR__.'/../vendor/autoload.php';
 
 // use namespace
-use AmitKhare\EasyRouter\EasyRouter;
+use AmitKhare\EasyRouter;
 
 // Take an instance of Router Class.
 // set optional Base URI as second perameter
