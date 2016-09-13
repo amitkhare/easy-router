@@ -125,7 +125,7 @@ class PHPRouter {
 		include(__DIR__."/includes/405.php");
 	}
 	
-	public function error($callback) {
+	public function error404($callback) {
 	    $this->error_callback = $callback;
 	}
 
