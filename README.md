@@ -9,7 +9,7 @@ composer require amitkhare/php-router dev-master
 ```
 ### VIA GIT
 ```sh
-git clone https://github.com/amitkhare/inkrouter.git
+git clone https://github.com/amitkhare/php-router.git
 ```
 
 
