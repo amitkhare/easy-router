@@ -128,7 +128,7 @@ class EasyRouter {
 		$callback = explode(":",$callback);
 		$class = $callback[0];
 		$method = $callback[1];
-		$cls = new $class($this->vars);
+		$cls = new $class($this->classVars);
 		return $cls->$method((object)$methodVars);
 	}
 	
