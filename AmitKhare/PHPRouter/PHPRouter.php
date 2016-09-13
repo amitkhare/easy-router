@@ -76,7 +76,7 @@ class PHPRouter {
 	      if (!$this->error_callback) {
 	        $this->error_callback = function() {
 	          header($_SERVER['SERVER_PROTOCOL']." 404 Not Found");
-	          echo '404';
+	          include(__DIR__."/includes/404.php");
 	        };
 	      } else {
 	        if (is_string($this->error_callback)) {
@@ -119,11 +119,7 @@ class PHPRouter {
 		return $cls->$method((object)$methodVars);
 	}
 	
-	public function pageNotFound($callback,$vars){
-		header($_SERVER['SERVER_PROTOCOL']." 404 Not Found");
-		include(__DIR__."/includes/404.php");
-	}
-	
+
 	public function methodNotAllowed(){
 		header($_SERVER['SERVER_PROTOCOL']." 405 Method Not Allowed");
 		include(__DIR__."/includes/405.php");
