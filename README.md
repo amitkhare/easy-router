@@ -1,15 +1,15 @@
-# amitkhare/php-router
+# amitkhare/slim-router
 
-##PHPRouter is an easy to use minimal PHP routing system
+##Slim Router is an easy to use minimal PHP routing system
 
 ## INSTALL
 ### VIA COMPOSER
 ```sh
-composer require amitkhare/php-router dev-master
+composer require amitkhare/slim-router dev-master
 ```
 ### VIA GIT
 ```sh
-git clone https://github.com/amitkhare/php-router.git
+git clone https://github.com/amitkhare/slim-router.git
 ```
 
 
@@ -35,10 +35,10 @@ RewriteRule ^(.*)$ index.php [QSA,L]
 require __DIR__.'/../vendor/autoload.php';
 
 // OR WITHOUT COMPOSER
-// require __DIR__.'/PATH-TO/PHPRouter.php';
+// require __DIR__.'/PATH-TO/SlimRouter.php';
 
 // Take an instance of Router Class.
-$router = new AmitKhare\PHPRouter\PHPRouter();
+$router = new AmitKhare\SlimRouter\SlimRouter();
 
 // URL::GET www.example.com/product/10
 // anonymous callback function
@@ -64,15 +64,15 @@ $router->dispatch();
 require __DIR__.'/../vendor/autoload.php';
 
 // OR WITHOUT COMPOSER
-// require __DIR__.'/PATH-TO/PHPRouter.php';
+// require __DIR__.'/PATH-TO/SlimRouter.php';
 
 // use namespace
-use AmitKhare\PHPRouter\PHPRouter;
+use AmitKhare\SlimRouter\SlimRouter;
 
 // Take an instance of Router Class.
 // (Optional) set Base URI as second perameter
 $baseURI = "/";
-$router = new PHPRouter(['var1'=123],$baseURI);
+$router = new SlimRouter(['var1'=123],$baseURI);
 
 // URL::GET www.example.com/
 $router->add("GET",'/', "Page:home");
