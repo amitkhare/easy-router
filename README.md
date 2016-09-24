@@ -42,7 +42,7 @@ $router = new AmitKhare\EasyRouter();
 
 // URL::GET www.example.com/product/10
 // anonymous callback function
-$route->add('GET','/product/{id:num}', function($id){
+$router->add('GET','/product/{id:num}', function($id){
 	echo  $id;
 });
 
