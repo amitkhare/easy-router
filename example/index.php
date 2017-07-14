@@ -5,9 +5,13 @@ use AmitKhare\EasyRouter;
 
 use App\Controllers\PageController;
 
+require __DIR__ . '/../vendor/autoload.php';
+
+require __DIR__ . '/PageController.php';
+
 // Take an instance of Router Class.
 // (Optional) set Base URI as second perameter
-$baseURI = "/nakul";
+$baseURI = "/";
 $router = new EasyRouter(['var1'=>123],$baseURI);
 
 // URL::GET www.example.com/
