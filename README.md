@@ -48,7 +48,7 @@ $router->add('GET','/product/{id:num}', function($id){
 
 // OR Callback of a class->method()
 // URL::GET www.example.com/
-$router->add("GET",'/', "Page:home");
+$router->add("GET",'/', [Page::class,"home"]);
 
 // Dispatch Routes.
 $router->dispatch();
@@ -59,6 +59,8 @@ $router->dispatch();
 
 ```sh
 <?php
+
+use App\Controllers\Page;
 
 // autoload via composer
 require __DIR__.'/../vendor/autoload.php';
@@ -72,10 +74,10 @@ use AmitKhare\EasyRouter;
 // Take an instance of Router Class.
 // (Optional) set Base URI as second perameter
 $baseURI = "/";
-$router = new EasyRouter(['var1'=123],$baseURI);
+$router = new EasyRouter(['var1'=>123],$baseURI);
 
 // URL::GET www.example.com/
-$router->add("GET",'/', "Page:home");
+$router->add("GET",'/', [Page::class,"home"]);
 
 // URL::GET www.example.com/article/tshirts/323
 // anonymous callback function
@@ -85,13 +87,13 @@ $router->add("GET",'/article/{category:w}/{id:num}/', function($category, $id){
 });
 
 // URL::GET www.example.com/product/222
-$router->add("GET",'/product/{id:d}', "Page:product");
+$router->add("GET",'/product/{id:d}', [Page::class,"product"]);
 
 // URL::POST www.example.com/product
-$router->add("POST",'/product', "Page:product_process");
+$router->add("POST",'/product', [Page::class,"product_process"]);
 
 // URL::GET www.example.com/about/something/
-$router->add("GET",'/about/{var1:w}', "Page:about",['myname'='amitkhare']);
+$router->add("GET",'/about/{var1:w}', [Page::class,"about"],['myname'=>'amitkhare']);
 
 // Dispatch Routes.
 $router->dispatch();
@@ -100,6 +102,9 @@ $router->dispatch();
 ### PAGE CLASS
 
 ```sh
+
+namespace App\Controllers;
+
 class Page {
 	public function __construct($vars=[]) {
 		foreach ($vars as $key => $value) {
