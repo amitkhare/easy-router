@@ -64,13 +64,13 @@ class EasyRouter {
      	foreach ($this->routes as $route) {
      		
      		if (preg_match($route['pattern'], $this->uri, $params) === 1) {
-     			//print_r($route);die;
+     			
      			array_shift($params);
      			
      			if(strpos($route['httpMethod'], $_SERVER['REQUEST_METHOD']) === false){
 					return $this->methodNotAllowed();
 				}
-				if(is_string($route['callback'])){
+				if(is_array($route['callback'])){
 					$i=0;
 					foreach ($route['params'] as $key => $value) {
 						$this->methodVars[$key]  =$params[$i];
@@ -125,7 +125,6 @@ class EasyRouter {
     }
     
     private function callMethod($callback,$methodVars=[]){
-		$callback = explode(":",$callback);
 		$class = $callback[0];
 		$method = $callback[1];
 		$cls = new $class($this->classVars);
