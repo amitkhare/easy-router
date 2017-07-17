@@ -67,19 +67,19 @@ class EasyRouter {
     }
 
     public function get($pattern,$callback,$methodVars=[]){
-        $this->add("GET",$pattern,$callback,$methodVars);
+        return $this->add("GET",$pattern,$callback,$methodVars);
     }
 
     public function post($pattern,$callback,$methodVars=[]){
-        $this->add("POST",$pattern,$callback,$methodVars);
+        return $this->add("POST",$pattern,$callback,$methodVars);
     }
 
     public function put($pattern,$callback,$methodVars=[]){
-        $this->add("PUT",$pattern,$callback,$methodVars);
+        return $this->add("PUT",$pattern,$callback,$methodVars);
     }
 
     public function delete($pattern,$callback,$methodVars=[]){
-        $this->add("DELETE",$pattern,$callback,$methodVars);
+        return $this->add("DELETE",$pattern,$callback,$methodVars);
     }
 
     public function setName($name){
