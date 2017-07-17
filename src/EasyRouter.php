@@ -26,6 +26,8 @@ namespace AmitKhare;
  *
  **/
 class EasyRouter {
+    private $tempPattern=null;
+    private $baseURL=null;
     private $baseURI="/";
     private $classVars;
     private $methodVars;
@@ -47,9 +49,10 @@ class EasyRouter {
     public $error_callback;
     
     public function __construct($classVars=[],$baseURI="/") {
-        $this->baseURI = $baseURI;
+    	$this->baseURI = $baseURI;
         $this->classVars = (object) $classVars;
         $this->uri = preg_replace('/^' . preg_quote($baseURI, '/') . '/', '', $_SERVER['REQUEST_URI']);
+        $this->baseURL = $_SERVER['HTTP_HOST'].$baseURI;
     }
     public function add($httpMethod,$pattern,$callback,$methodVars=[]){
     	//$pattern = "/product/{category:any}/{id:num}/{page:d}/";
@@ -58,7 +61,74 @@ class EasyRouter {
         $patternArr['httpMethod'] = strtoupper($httpMethod);
         $patternArr['methodVars'] = $methodVars;
         $this->routes[] = $patternArr;
+		
+		$this->tempPattern = $this->prepairPattern($pattern)['pattern'];
+        return $this;
     }
+    public function setName($name){
+    	
+    	foreach ($this->routes as $k => $route) {
+    		
+    		if($route['pattern'] == $this->tempPattern){
+    			$this->routes[$k]['name'] = $name;
+    			$this->tempPattern = null;
+    		}
+    		
+    	}
+    }
+    
+    public function pathFor($name,$data=[]){
+    	$pattern = "";
+    	foreach ($this->routes as $route) {
+    		if(isset($route['name']) && $route['name'] == $name)
+    			$pattern = $route['pattern'];
+    	}
+    	
+    	return $this->generateURLforPattern($pattern,$data);
+    	
+    }
+    
+    private function generateURLforPattern($patternRAW,$data=[]){
+    	
+    	$pattern = explode("/",$patternRAW);
+    	
+    	$pattern = array_slice($pattern, 1, -1);
+    	
+    	
+		
+		$j = 0;
+    	foreach ($pattern as $k => $v) {
+			if(substr($v, 0,1) == "(" && substr( $v,-1) == ")") {
+			    $j++;
+			}
+    	}
+    	
+    	// TODO:: check if right data segments is provided or not. 
+    	// alert user
+    	
+    	if($j > count($data)){
+    		die("Please provide proper segment(s). Only ". count($data) . " provided but ". $j . " segments needed. pathFor [".$patternRAW."]");
+    	}
+    	
+    	
+    	$i=0;
+    	foreach ($pattern as $k => $v) {
+			if(substr($v, 0,1) == "(" && substr( $v,-1) == ")") {
+			    // is expression\
+			    $pattern[$k] = $data[$i];
+			    $i++;
+			}
+    	}
+    	
+    	
+    	foreach ($pattern as $segment) {
+			$URL = $this->baseURL .="/".$segment;
+    	}
+    	
+    	return $URL;
+    	
+    }
+    
     
      public function dispatch() {
      	foreach ($this->routes as $route) {
@@ -125,6 +195,7 @@ class EasyRouter {
     }
     
     private function callMethod($callback,$methodVars=[]){
+    	$this->classVars->router = $this; // also provide router class
 		$class = $callback[0];
 		$method = $callback[1];
 		$cls = new $class($this->classVars);

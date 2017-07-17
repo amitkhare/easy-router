@@ -27,7 +27,8 @@ class PageController {
 	}
 	public function home()
 	{
-		echo "this is home.";
+		print_r($this->router->pathFor('article',['fooo',123]));
+		//echo "this is home.";
 	}
 	public function product_process()
 	{
