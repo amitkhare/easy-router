@@ -24,7 +24,10 @@ $router->add("GET",'/homepage', [PageController::class,"home"])->setName('home')
 
 // URL::GET www.example.com/article/tshirts/323
 // anonymous callback function
-$router->add("GET",'/article/{category:w}/{id:num}/', function($category, $id){
+$router->add("GET",'/article/{category:w}/{id:num}/', function($category, $id) use ($router){
+    
+    echo $router->pathFor('product',[123])."<br/>";
+    
     echo "Category: ".$category."<br/>";
     echo "ID: ".$id;
 })->setName('article');
