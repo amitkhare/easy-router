@@ -48,7 +48,7 @@ $router->add('GET','/product/{id:num}', function($id){
 
 // OR Callback of a class->method()
 // URL::GET www.example.com/
-$router->add("GET",'/', [Page::class,"home"]);
+$router->add("GET",'/', [Page::class,"home"])->setName('home');
 
 // Dispatch Routes.
 $router->dispatch();
@@ -77,7 +77,7 @@ $baseURI = "/";
 $router = new EasyRouter(['var1'=>123],$baseURI);
 
 // URL::GET www.example.com/
-$router->add("GET",'/', [Page::class,"home"]);
+$router->add("GET",'/', [Page::class,"home"])->setName('home');
 
 // URL::GET www.example.com/article/tshirts/323
 // anonymous callback function
