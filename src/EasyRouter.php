@@ -56,13 +56,13 @@ class EasyRouter {
     }
     public function add($httpMethod,$pattern,$callback,$methodVars=[]){
         //$pattern = "/product/{category:any}/{id:num}/{page:d}/";
-        $patternArr = $this->prepairPattern($pattern);
+        $patternArr = $this->preparePattern($pattern);
         $patternArr['callback'] = $callback;
         $patternArr['httpMethod'] = strtoupper($httpMethod);
         $patternArr['methodVars'] = $methodVars;
         $this->routes[] = $patternArr;
         
-        $this->tempPattern = $this->prepairPattern($pattern)['pattern'];
+        $this->tempPattern = $this->preparePattern($pattern)['pattern'];
         return $this;
     }
 
@@ -188,7 +188,7 @@ class EasyRouter {
      }
     
     
-    private function prepairPattern($pattern){
+    private function preparePattern($pattern){
         if(substr($pattern, -1) !="/"){
             $pattern .= "/";
         }
